@@ -6,7 +6,7 @@ use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Yaml\Tests\A;
 
-class HomeController extends Controller
+class SiteController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,17 +25,13 @@ class HomeController extends Controller
      */
     public function index(Post $post)
     {
-        $posts = $post->all();
-
-        return view('home', compact('posts'));
+        return view('portal.home.home');
     }
 
     public function update($id)
     {
 
         $post = Post::find($id);
-
-        $this->authorize('update-post', $post);
 
         return view('post-update', compact('post'));
     }
@@ -45,7 +41,16 @@ class HomeController extends Controller
         echo '<h1>'.auth()->user()->name.'</h1>';
 
         foreach (auth()->user()->roles as $role) {
-            echo $role->name;
+            echo "<b>$role->name</b> -> ";
+
+            $permissions = $role->permissions;
+            foreach ($permissions as $permission) {
+
+                echo "$permission->name , ";
+
+            }
+
+            echo '<hr>';
         }
     }
 }

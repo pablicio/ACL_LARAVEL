@@ -23,4 +23,8 @@ class PostPolicy
     public function updatePost(User $user, Post $post){
             return $user->id === $post->user_id;
     }
+
+    public function before(User $user){
+        return $user->name === "Carlos";
+    }
 }

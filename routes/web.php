@@ -11,16 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SiteController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['prefix'=>'painel'],function (){
+    //PostController
 
-Route::get('/post/{id}/update', 'HomeController@update');
+    //PermissionController
 
-Route::get('/roles-permissions', 'HomeController@rolesPermissions');
+    //RoleController
+
+    //PainelController
+    Route::get('/', 'Painel\PainelController@index');
+
+
+
+});
+
+
 
 
