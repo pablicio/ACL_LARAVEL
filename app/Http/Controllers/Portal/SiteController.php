@@ -1,28 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Portal;
 
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Yaml\Tests\A;
+use App\Http\Controllers\Controller;
+
 
 class SiteController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index(Post $post)
     {
         return view('portal.home.home');

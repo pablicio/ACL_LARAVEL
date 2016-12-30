@@ -11,16 +11,22 @@
 |
 */
 
-Route::get('/', 'SiteController@index');
+Route::get('/', 'Portal\SiteController@index');
 
 Auth::routes();
 
 Route::group(['prefix'=>'painel'],function (){
     //PostController
+    Route::get('/posts', 'Painel\PostController@index');
+
 
     //PermissionController
+    Route::get('/', 'Painel\PermissionController@index');
+
 
     //RoleController
+    Route::get('/', 'Painel\PermissionController@index');
+
 
     //PainelController
     Route::get('/', 'Painel\PainelController@index');
