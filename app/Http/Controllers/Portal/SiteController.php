@@ -13,7 +13,7 @@ class SiteController extends Controller
    
     public function index(Post $post)
     {
-        return view('portal.home.home');
+        return view('auth.login');
     }
 
     public function update($id)

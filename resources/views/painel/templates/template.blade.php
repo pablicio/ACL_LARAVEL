@@ -36,12 +36,20 @@
                 <h1>Usuários</h1>
             </a>
         </li>
+        @can('view_post')
         <li class="col-md-2 text-center">
             <a href="/painel/posts">
                 <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
                 <h1>Posts</h1>
             </a>
         </li>
+        @else
+          <li class="col-md-2 text-center">
+                <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
+                <h1>Bloqueado</h1>
+            </a>
+        </li>
+        @endcan
         <li class="col-md-2 text-center">
             <a href="/painel/roles">
                 <img src="{{url("assets/painel/imgs/funcao-acl.png")}}" alt="Albuns" class="img-menu">
@@ -49,16 +57,19 @@
             </a>
         </li>
         <li class="col-md-2 text-center">
-            <a href="/painel/permissios">
+            <a href="/painel/permissions">
                 <img src="{{url("assets/painel/imgs/permissao-acl.png")}}" alt="Musicas" class="img-menu">
                 <h1>Permissions</h1>
             </a>
         </li>
         <li class="col-md-2 text-center">
-            <a href="/logout">
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" ">
+                                            {{ csrf_field() }}
+            <button type="submit" class="btn btn-link" aria-label="Alinhar na esquerda">
                 <img src="{{url("assets/painel/imgs/sair-acl.png")}}" alt="Sair" class="img-menu">
                 <h1>Sair</h1>
-            </a>
+            </button>
+        </form>
         </li>
     </ul>
 </div><!--Menu-->

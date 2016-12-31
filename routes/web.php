@@ -13,7 +13,12 @@
 
 Route::get('/', 'Portal\SiteController@index');
 
-Auth::routes();
+Route::group(['middleware' => ['web']], function () {
+    //
+
+Route::auth();
+
+
 
 Route::group(['prefix'=>'painel'],function (){
     //PostController
@@ -21,11 +26,21 @@ Route::group(['prefix'=>'painel'],function (){
 
 
     //PermissionController
-    Route::get('/', 'Painel\PermissionController@index');
+    Route::get('/permissions', 'Painel\PermissionController@index');
+    Route::get('/permissions/{id}/roles', 'Painel\PermissionController@roles');
+
 
 
     //RoleController
-    Route::get('/', 'Painel\PermissionController@index');
+    Route::get('/roles', 'Painel\RoleController@index');
+    Route::get('/roles/{id}/permissions', 'Painel\RoleController@permissions');
+    Route::get('/roles/{id}/edit', 'Painel\RoleController@edit');
+
+
+
+    //UserController
+    Route::get('/users', 'Painel\UserController@index');
+    Route::get('/users/{id}/roles', 'Painel\UserController@roles');
 
 
     //PainelController
@@ -38,3 +53,5 @@ Route::group(['prefix'=>'painel'],function (){
 
 
 
+Route::get('/home', 'HomeController@index');
+});

@@ -15,29 +15,32 @@
       </form>
     </div>
 
-
+    
   </div><!--Actions-->
   <div class="container">
     <h1 class="title">
-        Listagem dos Posts
+        Listagem dos usuários
     </h1>
 
     <table class="table table-hover">
       <tr>
-        <th>Título</th>
-        <th>Descrição</th>
-        <th width="100px">Ações</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th width="150px">Ações</th>
       </tr>
     
-      @foreach($posts as $post)
+      @foreach($users as $user)
         <tr>
-        <td>{{$post->title}}</td>
-        <td>{{$post->description}}</td>
+        <td>{{$user->name}}</td>
+        <td>{{$user->email}}</td>
         <td>
-            <a href="{{url("/painel/post/$post->id/edit")}}" class="edit">
+            <a href="{{url("/painel/users/$user->id/roles")}}" class="permission">
+                <i class="fa fa-unlock"></i>
+            </a>
+            <a href="{{url("/painel/user/$user->id/edit")}}" class="edit">
                 <i class="fa fa-pencil-square-o"></i>
             </a>
-            <a href="{{url("/painel/post/$post->id/delete")}}" class="delete">
+            <a href="{{url("/painel/user/$user->id/delete")}}" class="delete">
                 <i class="fa fa-trash"></i>
             </a>
         </td>
