@@ -2,29 +2,9 @@
 
 namespace App\Policies;
 
-use App\Post;
-use App\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
-
-class PostPolicy
+class PostPolicy extends Policy
 {
-    use HandlesAuthorization;
 
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+    protected $slug = 'post';
 
-    public function updatePost(User $user, Post $post){
-            return $user->id === $post->user_id;
-    }
-
-    public function before(User $user){
-        return $user->name === "Carlos";
-    }
 }

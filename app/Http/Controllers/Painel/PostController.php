@@ -1,20 +1,25 @@
 <?php
 
 namespace App\Http\Controllers\Painel;
+
 use App\Http\Controllers\Controller;
 use App\Post;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
 
-    public function index(Post $post)
+    public function index()
     {
 
-        $posts = $post->all();
+        $posts = DB::table('posts')->paginate(5);
+
+        $post = Post::find(1);
+
+        $this->authorize('show',$post);
 
         return view('painel.posts.index', compact('posts'));
+
     }
 
 }

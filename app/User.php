@@ -32,19 +32,43 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class,'role_user');
     }
 
-    public function hasPermission(Permission $permission)
+    public function permissions()
     {
-        return self::hasAnyRoles($permission->roles);
+        return $this->belongsToMany(Permission::class, 'permission_user', 'user_id', 'permission_id');
     }
 
-    public function hasAnyRoles($roles)
+    public function posts()
+    {
+        return $this->hasMany(Post::class,'user_id');
+    }
+
+    public function hasSinglePermission(Permission $permission)
+    {
+        return $this->permissions()->where('user_id', $this->id)->where('permission_id', $permission->id)->first();
+    }
+
+    public function hasPermissionRole(Permission $permission)
+    {
+        return self::hasAnyRoles($permission->roles, $permission);
+    }
+
+    public function hasAnyRoles($roles,$permission = null)
     {
 
         if(is_array($roles) || is_object($roles))
         {
-            return !! $roles->intersect($this->roles)->count();
+            if($roles->isEmpty())
+                return self::hasSinglePermission($permission);
+            else
+                return !! $roles->intersect($this->roles)->count();
         }
 
         return $this->roles->contains('name',$roles);
+    }
+
+    public function isRoot()
+    {
+        if(self::hasAnyRoles('Root'))
+            return true;
     }
 }

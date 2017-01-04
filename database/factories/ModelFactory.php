@@ -21,3 +21,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Post::class, function ($faker) {
+    return [
+        'title' => $faker->title,
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+        'description' => $faker->text,
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s'),
+
+    ];
+});

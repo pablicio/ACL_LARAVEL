@@ -27,7 +27,7 @@
         <li class="col-md-2 text-center">
             <a href="/painel">
                 <img src="{{url("assets/painel/imgs/acl-branca.png")}}" alt="LaraMusic" class="login">
-
+                {{--<h1>{{ Auth::user()->name }}</h1>--}}
             </a>
         </li>
         <li class="col-md-2 text-center">
@@ -36,7 +36,7 @@
                 <h1>Usuários</h1>
             </a>
         </li>
-        @can('view_post')
+        @can('update')
         <li class="col-md-2 text-center">
             <a href="/painel/posts">
                 <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
