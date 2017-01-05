@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 
 class PainelController extends Controller
 {
-    public function index(){
+    public function index(Post $post){
+
 
 
         $totalUsers = User::count();
@@ -19,6 +20,6 @@ class PainelController extends Controller
         $totalPermissions = Permission::count();
         $totalPosts = Post::count();
 
-        return view('painel.home.index', compact('totalUsers','totalRoles','totalPermissions','totalPosts'));
+        return view('painel.home.index', compact('totalUsers','totalRoles','totalPermissions','totalPosts','post'));
     }
 }

@@ -36,7 +36,8 @@
                 <h1>Usuários</h1>
             </a>
         </li>
-        @can('update')
+
+        @can('show')
         <li class="col-md-2 text-center">
             <a href="/painel/posts">
                 <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">

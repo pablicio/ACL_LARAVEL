@@ -5,13 +5,16 @@ use App\Http\Controllers\Controller;
 use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
      public function index(User $user)
     {
 
-        $users = $user->all();
+        $users = DB::table('users')->paginate(10);
+
+        $this->authorize('show',$user);
 
         return view('painel.users.index', compact('users'));
     }

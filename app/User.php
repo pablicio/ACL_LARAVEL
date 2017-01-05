@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function hasPermissionRole(Permission $permission)
     {
-        return self::hasAnyRoles($permission->roles, $permission);
+        return self::hasAnyRoles(auth()->user()->roles, $permission);
     }
 
     public function hasAnyRoles($roles,$permission = null)
@@ -61,6 +61,8 @@ class User extends Authenticatable
                 return self::hasSinglePermission($permission);
             else
                 return !! $roles->intersect($this->roles)->count();
+
+
         }
 
         return $this->roles->contains('name',$roles);

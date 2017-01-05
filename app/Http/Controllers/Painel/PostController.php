@@ -9,16 +9,14 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Post $post)
     {
 
         $posts = DB::table('posts')->paginate(5);
 
-        $post = Post::find(1);
-
         $this->authorize('show',$post);
 
-        return view('painel.posts.index', compact('posts'));
+        return view('painel.posts.index', compact('posts', 'post'));
 
     }
 

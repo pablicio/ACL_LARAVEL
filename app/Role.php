@@ -8,7 +8,8 @@ class Role extends Model
 {
     protected $table = 'roles';
 
-    public function permissions(){
+    public function permissions()
+    {
         return $this->belongsToMany(Permission::class);
     }
 }
