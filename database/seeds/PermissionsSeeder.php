@@ -14,6 +14,31 @@ class PermissionsSeeder extends Seeder
     {
         DB::table('permissions')->insert([
             [
+                'name' => 'users-show',
+                'label' => 'Exibir Usuários',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'users-create',
+                'label' => 'Criar Usuários',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+
+            ],
+            [
+                'name' => 'users-update',
+                'label' => 'Editar Usuários',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'users-destroy',
+                'label' => 'Deletar Usuários',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
                 'name' => 'roles-show',
                 'label' => 'Exibir Roles',
                 'created_at' => date('Y-m-d H:i:s'),

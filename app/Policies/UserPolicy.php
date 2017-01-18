@@ -5,6 +5,6 @@ namespace App\Policies;
 class UserPolicy extends Policy
 {
 
-    protected $slug = 'user';
+    protected $slug = 'users';
 
 }
