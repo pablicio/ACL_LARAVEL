@@ -1,6 +1,6 @@
 # Laravel ACL (Acess Control List) Por Thiago Pablício
 
-ACL é uma arquitetura de autenticação e autorização baseada em Roles(Papéis) e Permissions (Permissões)
+ACL é uma arquitetura de autenticação e autorização baseada em Roles (Papéis) e Permissions (Permissões)
  cada usuário no sistema está associado a determinadas roles que estão associadas a várias permissões.
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
