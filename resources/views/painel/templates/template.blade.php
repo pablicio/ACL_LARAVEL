@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
           integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
@@ -22,12 +24,19 @@
     <link rel="icon" type="image/png" href="{{url("assets/painel/imgs/favicon-acl.png")}}">
 </head>
 <body>
+
 <div class="menu">
     <ul class="menu col-md-12">
-        <li class="col-md-2 text-center">
-            <a href="/painel">
-                <img src="{{url("assets/painel/imgs/acl-branca.png")}}" alt="LaraMusic" class="login">
+        {{--<li class="col-md-2 text-center">--}}
+            {{--<a href="/painel">--}}
+                {{--<img src="{{url("assets/painel/imgs/acl-branca.png")}}" alt="LaraMusic" class="login">--}}
                 {{--<h1>{{ Auth::user()->name }}</h1>--}}
+            {{--</a>--}}
+        {{--</li>--}}
+        <li class="col-md-2 text-center">
+            <a href="/home">
+                <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
+                <h1>Home</h1>
             </a>
         </li>
         <li class="col-md-2 text-center">
@@ -36,21 +45,6 @@
                 <h1>Usuários</h1>
             </a>
         </li>
-
-        @can('show')
-        <li class="col-md-2 text-center">
-            <a href="/painel/posts">
-                <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
-                <h1>Posts</h1>
-            </a>
-        </li>
-        @else
-          <li class="col-md-2 text-center">
-                <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
-                <h1>Bloqueado</h1>
-            </a>
-        </li>
-        @endcan
         <li class="col-md-2 text-center">
             <a href="/painel/roles">
                 <img src="{{url("assets/painel/imgs/funcao-acl.png")}}" alt="Albuns" class="img-menu">
@@ -88,7 +82,7 @@
 
 <div class="footer actions">
     <div class="container text-center">
-        <p class="footer">EspecializaTi - Todos os direitos reservados</p>
+        <p class="footer">Thiago Pablicio - 2017</p>
     </div>
 </div>
 
@@ -100,5 +94,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
+
+@yield('footer_scripts')
+
+<script type="text/javascript">
+    $(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    })
+</script>
 </body>
 </html>

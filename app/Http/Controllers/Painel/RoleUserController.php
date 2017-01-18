@@ -6,14 +6,13 @@ use App\Permission;
 
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PermissionController extends Controller
 {
-    public function index(Permission $permission)
+ 	public function index(Permission $permission)
     {
 
-        $permissions = DB::table('permissions')->paginate(5);
+        $permissions = $permission->all();
 
         return view('painel.permissions.index', compact('permissions'));
     }

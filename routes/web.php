@@ -13,45 +13,38 @@
 
 Route::get('/', 'Portal\SiteController@index');
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::get('/home', 'HomeController@index');
+
+
+Route::group(['prefix'=>'painel'],function (){
+    //PermissionController
+    Route::resource('/permissions', 'Painel\PermissionController');
+    Route::get('/permissions/{id}/roles', 'Painel\PermissionController@roles');
+
+    //RoleController
+    Route::resource('/roles', 'Painel\RoleController');
+    Route::get('/roles/{id}/permissions', 'Painel\RoleController@permissions');
+
+    //UserController
+    Route::resource('/users', 'Painel\UserController');
+    Route::get('/users/{id}/roles', 'Painel\UserController@roles');
+
+    //PainelController
+    Route::get('/', 'Painel\PainelController@index');
+
+    //PermissionRoleController
+    Route::get('/permission_roles/create', 'Painel\PermissionRoleController@create');
+    Route::post('{permission_role_id}', 'Painel\PermissionRoleController@store');
+
+    //PermissionUserController
+    Route::get('/permission_users/edit/{id}', 'Painel\PermissionUserController@edit');
+    Route::put('/permission_users/edit/{id}', 'Painel\PermissionUserController@update');
+
+});
+
+
 
 Route::auth();
 
 
 
-Route::group(['prefix'=>'painel'],function (){
-    //PostController
-    Route::get('/posts', 'Painel\PostController@index');
-
-
-    //PermissionController
-    Route::get('/permissions', 'Painel\PermissionController@index');
-    Route::get('/permissions/{id}/roles', 'Painel\PermissionController@roles');
-
-
-
-    //RoleController
-    Route::get('/roles', 'Painel\RoleController@index');
-    Route::get('/roles/{id}/permissions', 'Painel\RoleController@permissions');
-    Route::get('/roles/{id}/edit', 'Painel\RoleController@edit');
-
-
-
-    //UserController
-    Route::get('/users', 'Painel\UserController@index');
-    Route::get('/users/{id}/roles', 'Painel\UserController@roles');
-
-
-    //PainelController
-    Route::get('/', 'Painel\PainelController@index');
-
-
-
-});
-
-
-
-
-Route::get('/home', 'HomeController@index');
-});

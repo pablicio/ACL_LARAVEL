@@ -14,55 +14,55 @@ class PermissionsSeeder extends Seeder
     {
         DB::table('permissions')->insert([
             [
-                'name' => 'permission-all',
-                'label' => 'permission-all',
+                'name' => 'roles-show',
+                'label' => 'Exibir Roles',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'role-all',
-                'label' => 'role-all',
+                'name' => 'roles-create',
+                'label' => 'Criar Roles',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
 
             ],
             [
-                'name' => 'user-show',
-                'label' => 'user-show',
+                'name' => 'roles-update',
+                'label' => 'Editar Roles',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'user-update',
-                'label' => 'user-update',
+                'name' => 'roles-destroy',
+                'label' => 'Deletar Roles',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'user-destroy',
-                'label' => 'user-destroy',
+                'name' => 'permissions-show',
+                'label' => 'Exibir Permissions',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'post-show',
-                'label' => 'post-show',
+                'name' => 'permissions-create',
+                'label' => 'Criar Permissions',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
 
             ],
             [
-                'name' => 'post-update',
-                'label' => 'post-update',
+                'name' => 'permissions-update',
+                'label' => 'Editar Permissions',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'post-destroy',
-                'label' => 'post-destroy',
+                'name' => 'permissions-destroy',
+                'label' => 'Deletar Permissions',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ]
+            ],
 
         ]);
 

@@ -19,14 +19,14 @@
     </div><!--Actions-->
     <div class="container">
         <h1 class="title">
-            Listagem das Roles
+            Listagem dos usuários
         </h1>
 
         <table class="table table-hover">
             <tr>
                 <th>Nome</th>
                 <th>Label</th>
-                <th width="200px">Ações</th>
+                <th width="150px">Ações</th>
             </tr>
 
             @foreach($roles as $role)
@@ -38,12 +38,6 @@
                         {{ Form::hidden('_method', 'DELETE') }}
                         <button type="link" class="delete"><i class="fa fa-trash"></i></button>
                         {{ Form::close() }}
-
-
-                        <a href="{{url("/painel/permission_roles/create")}}">
-                            <button class="add"><i class="glyphicon glyphicon-plus"></i></button>
-                        </a>
-
                         <a href="{{url("/painel/roles/$role->id/permissions")}}">
                             <button class="permission"><i class="fa fa-unlock"></i></button>
                         </a>

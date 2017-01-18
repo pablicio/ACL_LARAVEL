@@ -5,9 +5,9 @@
         <div class="container">
             <ul class="relatorios">
                 <li class="col-md-6 text-center">
-                    <a href="/painel/posts">
+                    <a href="/home">
                         <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
-                        <h1>{{$totalPosts}}</h1>
+                        <h1></h1>
                     </a>
                 </li>
                 <li class="col-md-6 text-center">

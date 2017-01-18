@@ -18,6 +18,43 @@ class RoleController extends Controller
     }
 
 
+    public function create()
+    {
+        return view('painel.roles.create');
+    }
+
+
+    public function store(Request $request)
+    {
+        Role::create($request->all());
+
+        return redirect()->to('painel/roles');
+    }
+
+    public function edit($id)
+    {
+        $roles = Role::findOrFail($id);
+
+        return view('painel.roles.edit', compact('roles'));
+    }
+
+
+    public function update($id, Request $request)
+    {
+        $roles = Role::findOrFail($id);
+
+        $roles->update($request->all());
+
+        return redirect()->to('painel/roles');
+    }
+
+
+    public function destroy($id)
+    {
+        Role::findOrFail($id)->delete();
+
+        return redirect()->to('painel/roles');
+    }
     public function permissions(Role $role,$id)
     {
 

@@ -67,6 +67,13 @@ ul.relatorios li h1{
     font-size: 16px;
 }
 
+.add{
+    background: #0000FF;
+    padding: 8px;
+    color: #FFF;
+    border-radius: 4px;
+    margin: 4px;
+}
 
 .edit{
     background: #5A1F17;

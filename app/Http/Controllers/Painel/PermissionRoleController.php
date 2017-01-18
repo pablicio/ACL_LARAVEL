@@ -1,35 +1,45 @@
 <?php
 
 namespace App\Http\Controllers\Painel;
+
 use App\Http\Controllers\Controller;
 use App\Permission;
 
 
+use App\PermissionRole;
+use App\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class PermissionController extends Controller
+class PermissionRoleController extends Controller
 {
     public function index(Permission $permission)
     {
 
-        $permissions = DB::table('permissions')->paginate(5);
+        $permissions = $permission->all();
 
-        return view('painel.permissions.index', compact('permissions'));
+        return view('painel.permission_roles.create');
     }
 
 
     public function create()
     {
-        return view('painel.permissions.create');
+
+        $roles = Role::pluck('label', 'id');
+
+        $permissions = Permission::orderBy('name')->get();
+
+        return view('painel.permission_roles.create', compact('roles', 'permissions'));
     }
 
 
     public function store(Request $request)
     {
-        Permission::create($request->all());
 
-        return redirect()->to('painel/permissions');
+        $role = Role::findOrFail($request['role_id']);
+
+        $role->permissions()->sync($request['permissions']);
+
+        return redirect()->to('painel/roles');
     }
 
     public function edit($id)
@@ -57,17 +67,15 @@ class PermissionController extends Controller
         return redirect()->to('painel/permissions');
     }
 
-    public function roles(Permission $permission,$id)
+    public function roles(Permission $permission, $id)
     {
 
         $permissions = $permission->find($id);
 
         $roles = $permissions->roles()->get();
 
-        return view('painel.permissions.roles', compact('roles','permissions'));
+        return view('painel.permissions.roles', compact('roles', 'permissions'));
     }
-
-
 
 
 }
